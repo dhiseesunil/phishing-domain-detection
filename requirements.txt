@@ -8,4 +8,4 @@ sockets
 streamlit
 datetime
 dnspython
-urllib.parse
+urllib
