@@ -104,7 +104,7 @@ def count_characters_and_vowels(url, domain, directory, file, parameters, data):
         data.append(0)
 
 def tld_in_url_params(url, parameters, data) :
-    l = joblib.load(r'C:\Users\Sunil Bharadhwaj C\Documents\Internshala\phishing-domain-detection\top_level_domains.joblib')
+    l = joblib.load('top_level_domains.joblib')
     for i in l :
         if i in url :
             data.append(1)
@@ -214,7 +214,7 @@ def get_redirects(url, data):
     except requests.exceptions.RequestException:
         data.append(0)
 
-model = joblib.load(r'C:\Users\Sunil Bharadhwaj C\Documents\Internshala\phishing-domain-detection\phishing_model.joblib')
+model = joblib.load('phishing_model.joblib')
 
 def main() :
     st.set_page_config(
