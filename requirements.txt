@@ -1,0 +1,11 @@
+numpy
+regex
+requests
+tldextract
+whois
+joblib
+sockets
+streamlit
+datetime
+dnspython
+pycopy-urllib.parse
