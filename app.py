@@ -14,7 +14,7 @@ import logging
 from urllib.parse import urlparse
 
 logging.basicConfig(
-    filename=r'C:\Users\Sunil Bharadhwaj C\Documents\Internshala\phishing-domain-detection\logger.log',  # Log file name
+    filename='logger.log',  # Log file name
     level=logging.INFO,     # Logging level (you can use logging.INFO, logging.ERROR, etc.)
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S'
@@ -120,7 +120,7 @@ def count_characters_and_vowels(url, data):
         data.append(0)
 
 def tld_in_url_params(url, parameters, data) :
-    l = joblib.load(r'C:\Users\Sunil Bharadhwaj C\Documents\Internshala\phishing-domain-detection\top_level_domains.joblib')
+    l = joblib.load('top_level_domains.joblib')
     for i in l :
         if i in url :
             data.append(1)
@@ -230,7 +230,7 @@ def get_redirects(url, data):
     except requests.exceptions.RequestException:
         data.append(0)
 
-model = joblib.load(r'C:\Users\Sunil Bharadhwaj C\Documents\Internshala\phishing-domain-detection\phishing_model.joblib')
+model = joblib.load('phishing_model.joblib')
 #url = 'https://www.youtube.com/'
 #master(url, model)
 
