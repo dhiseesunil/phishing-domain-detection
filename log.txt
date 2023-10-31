@@ -1,0 +1,8 @@
+2023-10-30 19:35:38 - __main__ - INFO - Program started
+2023-10-30 19:35:38 - __main__ - INFO - Characters, vowels counted
+2023-10-30 19:35:38 - __main__ - INFO - checked if email in URL
+2023-10-30 19:35:39 - __main__ - INFO - Measured response time
+2023-10-30 19:35:41 - __main__ - INFO - Checked Sender Policy Framework
+2023-10-30 19:35:42 - __main__ - INFO - Checked creation and expiration dates
+2023-10-30 19:35:49 - __main__ - INFO - Checked servers and redirects
+2023-10-30 19:35:49 - __main__ - INFO - Prediction done
