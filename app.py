@@ -37,7 +37,7 @@ def predict(one, two, three, four, five, six, seven, eight):
                                        'qty_underline_directory'])
 
     read = StoreModel()
-    k_means = read.read_model("phishing_model")
+    k_means = read.read_model("model")
     cluster = k_means.predict(user_input)
     scale = read.read_model("Scale")
     user_input = pd.DataFrame(scale.transform(user_input), columns=user_input.columns)
