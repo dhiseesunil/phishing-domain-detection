@@ -19,7 +19,7 @@ def get_user_input():
     return one, two, three, four, five, six, seven, eight
 
 def main():
-    st.title('My App')
+    st.title('Phishing Domain Detection')
 
     if st.button('Train'):
         cluster_model = train()
@@ -37,7 +37,7 @@ def predict(one, two, three, four, five, six, seven, eight):
                                        'qty_underline_directory'])
 
     read = StoreModel()
-    k_means = read.read_model("k_means")
+    k_means = read.read_model("phishing_model")
     cluster = k_means.predict(user_input)
     scale = read.read_model("Scale")
     user_input = pd.DataFrame(scale.transform(user_input), columns=user_input.columns)
@@ -45,16 +45,16 @@ def predict(one, two, three, four, five, six, seven, eight):
         model = read.read_model("gradient_boosting_cluster0")
         prediction = model.predict(user_input)
         if prediction[0] == 0:
-            prediction = "The Domain is real..!"
+            prediction = "The Domain may be safe to use"
         else:
-            prediction = "The Domain is Fake..!"
+            prediction = "The Domain may not be safe to use"
     elif cluster[0] == 1:
         model = read.read_model("support_vector_classifier_cluster1")
         prediction = model.predict(user_input)
         if prediction[0] == 0:
-            prediction = "The Domain is real..!"
+            prediction = "The Domain may be safe to use"
         else:
-            prediction = "The Domain is Fake..!"
+            prediction = "The Domain may not be safe to use"
 
     return str(prediction)
 
