@@ -38,6 +38,8 @@ def master(url, model) :
         get_mx_servers(domain, data)
         get_redirects(url, data)
     #print(data, len(data))
+
+    print(model.feature_importances_)
     
     try :
         data = (np.array(data)).reshape(1, 104)
