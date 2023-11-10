@@ -168,12 +168,14 @@ def measure_response_time(url, data):
         'Accept-Encoding': 'gzip, deflate, br',
         'Connection': 'keep-alive',
         }
-        requests.get(url, headers = headers)
+        rspns = requests.get(url, headers = headers)
         response_time_ms = datetime.datetime.now().second - start_time
         data.append(response_time_ms)
+        st.write(rspns)
         st.write("Hello World")
     
-    except :
+    except Expection as e:
+        st.write(e)
         data.append(0)
 
 def check_spf_record(domain, data):
