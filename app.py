@@ -44,6 +44,8 @@ def master(url, model) :
     
     try :
         data = (np.array(data)).reshape(1, 104)
+        st.write(data)
+        st.write(data.shape)
         pred = model.predict(data)
         #return pred[0]
         st.write(pred)
