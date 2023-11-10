@@ -11,16 +11,14 @@ import streamlit as st
 import datetime
 import dns.resolver
 import logging
-from urllib.parse import urlparse
 
 def master(url, model) :
-    parsed_url = urlparse(url)
-    domain = parsed_url.netloc.lstrip("www.")
     data = []
     
     #print(data, len(data))
     with st.spinner("Counting characters, vowels....") :
-        count_characters_and_vowels(url, data)
+        domain, directories, file, parameters = split_url(url)
+        count_characters_and_vowels(domain, directories, file, parameters, data)
     #print(data, len(data))
     with st.spinner("Checking if email in URL....") :
         email_in_url(url, data)
@@ -58,16 +56,37 @@ def master(url, model) :
         st.warning('### Please enter valid URL')
         #print('no urlllll')
 
-def count_characters_and_vowels(url, data):
-    parsed_url = urlparse(url)
-    domain = parsed_url.netloc
-    directory, file = parsed_url.path.rsplit('/', 1) if '/' in parsed_url.path else ('', parsed_url.path)
-    parameters = parsed_url.query
+
+
+def split_url(url):
+    # Split the URL into protocol, domain and the rest
+    protocol, _, rest = url.partition('://')
+    domain, _, rest = rest.partition('/')
+    
+    # Split the rest into path and parameters
+    path, _, parameters = rest.partition('?')
+    
+    # Split the path into directories and file
+    directories = path.split('/')
+    file = '' if '.' not in directories[-1] else directories[-1]
+    directories = directories[:-1] if file else directories
+    
+    # Join the directories back into a string
+    directories = '/'.join(directories)
+    
+    # Split the parameters into a list of values
+    parameters = [param.split('=')[1] for param in parameters.split('&')] if parameters else []
+    
+    return domain, directories, file, parameters
+
+
+
+def count_characters_and_vowels(domain, directories, file, parameters, url, data):
     
     tld_in_url_params(url, parameters, data)
     #print(data, len(data))
 
-    components = [url, domain, directory, file, parameters]
+    components = [url, domain, directories, file, parameters]
     #print(components)
 
     special_characters = '.-_/?=@&! ~,+*#$%'
