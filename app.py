@@ -39,7 +39,8 @@ def master(url, model) :
         get_redirects(url, data)
     #print(data, len(data))
 
-    print(model.feature_importances_)
+    st.write(model.feature_importances_)
+    st.write('hi')
     
     try :
         data = (np.array(data)).reshape(1, 104)
