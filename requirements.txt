@@ -8,3 +8,4 @@ sockets
 streamlit
 datetime
 dnspython
+xgboost
