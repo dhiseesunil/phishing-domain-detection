@@ -18,7 +18,7 @@ def master(url, model) :
     #print(data, len(data))
     with st.spinner("Counting characters, vowels....") :
         domain, directories, file, parameters = split_url(url)
-        count_characters_and_vowels(domain, directories, file, parameters, data)
+        count_characters_and_vowels(domain, directories, file, parameters, url, data)
     #print(data, len(data))
     with st.spinner("Checking if email in URL....") :
         email_in_url(url, data)
