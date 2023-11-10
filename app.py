@@ -13,13 +13,6 @@ import dns.resolver
 import logging
 from urllib.parse import urlparse
 
-logging.basicConfig(
-    filename=r'C:\Users\Sunil Bharadhwaj C\Documents\Internshala\phishing-domain-detection\logger.log',  # Log file name
-    level=logging.INFO,     # Logging level (you can use logging.INFO, logging.ERROR, etc.)
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'
-)
-
 def master(url, model) :
     parsed_url = urlparse(url)
     domain = parsed_url.netloc.lstrip("www.")
@@ -29,30 +22,24 @@ def master(url, model) :
     with st.spinner("Counting characters, vowels....") :
         count_characters_and_vowels(url, data)
     #print(data, len(data))
-    logger.info('Characters, vowels counted')
     with st.spinner("Checking if email in URL....") :
         email_in_url(url, data)
     #print(data, len(data))
-    logger.info('checked if email in URL')
     with st.spinner("Measuring response time....") :
         measure_response_time(url, data)
     #print(data, len(data))
-    logger.info('Measured response time')
     with st.spinner("Checking for Sender Policy Framework....") :
         check_spf_record(domain, data)
     #print(data, len(data))
-    logger.info('Checked Sender Policy Framework')
     with st.spinner("Checking for creation and expiration dates....") :
         create_exp(url, data)
     #print(data, len(data))
-    logger.info('Checked creation and expiration dates')
     with st.spinner("Checking for servers, redirects....") :
         get_ip_resolved(domain, data)
         get_nameservers(domain, data)
         get_mx_servers(domain, data)
         get_redirects(url, data)
     #print(data, len(data))
-    logger.info('Checked servers and redirects')
     
     try :
         data = (np.array(data)).reshape(1, 104)
@@ -120,7 +107,7 @@ def count_characters_and_vowels(url, data):
         data.append(0)
 
 def tld_in_url_params(url, parameters, data) :
-    l = joblib.load(r'C:\Users\Sunil Bharadhwaj C\Documents\Internshala\phishing-domain-detection\top_level_domains.joblib')
+    l = joblib.load('top_level_domains.joblib')
     for i in l :
         if i in url :
             data.append(1)
@@ -230,7 +217,7 @@ def get_redirects(url, data):
     except requests.exceptions.RequestException:
         data.append(0)
 
-model = joblib.load(r'C:\Users\Sunil Bharadhwaj C\Documents\Internshala\phishing-domain-detection\phishing_model.joblib')
+model = joblib.load('phishing_model.joblib')
 #url = 'https://www.youtube.com/'
 #master(url, model)
 
