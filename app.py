@@ -46,6 +46,8 @@ def master(url, model) :
         data = (np.array(data)).reshape(1, 104)
         pred = model.predict(data)
         #return pred[0]
+        st.write(pred)
+        st.write(type(pred))
         logger.info('Prediction done')
         if pred[0] == 0 :
             st.success('### May not a phishing website')
@@ -169,6 +171,7 @@ def measure_response_time(url, data):
         requests.get(url, headers = headers)
         response_time_ms = datetime.datetime.now().second - start_time
         data.append(response_time_ms)
+        st.write("Hello World")
     
     except :
         data.append(0)
