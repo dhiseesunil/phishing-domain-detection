@@ -95,7 +95,6 @@ st.button("Login/Signup", key = "login")
 
 if len(name) > 0 and len(password) > 0 :
     url = st.text_input("#### Hello {}!, please enter the URL : ".format(name), key = "url")
-    st.write(url)
     if 'http' not in url :
         url = 'https://' + url
     predict = st.button("Predict", key = "predict")
