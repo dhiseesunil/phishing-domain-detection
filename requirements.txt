@@ -6,3 +6,4 @@ whois
 datetime
 xgboost
 streamlit
+scikit-learn
