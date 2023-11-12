@@ -3,7 +3,7 @@
 import pandas as pd
 import numpy as np
 import joblib
-import re
+import regex as re
 import whois
 import datetime
 import streamlit as st
