@@ -2,7 +2,7 @@ pandas
 numpy
 joblib
 regex
-whois
+python-whois
 datetime
 xgboost
 streamlit
