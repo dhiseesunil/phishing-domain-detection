@@ -95,8 +95,7 @@ st.button("Login/Signup", key = "login")
 
 if len(name) > 0 and len(password) > 0 :
     url = st.text_input("#### Hello {}!, please enter the URL : ".format(name), key = "url")
-    if 'www.' not in url :
-        url = 'www.' + url
+    #if url == 'https://phishing-domain-detection.streamlit.app/' or url == '' :
     if 'http' not in url :
         url = 'https://' + url
     predict = st.button("Predict", key = "predict")
