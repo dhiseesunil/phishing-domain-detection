@@ -1,7 +1,6 @@
 pandas
 numpy
 joblib
-sklearn
 regex
 whois
 datetime
