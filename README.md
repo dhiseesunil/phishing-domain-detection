@@ -5,6 +5,8 @@
 ## Proposed Solution
 #### This system relies on a set of critical features for phishing detection, encompassing Length of URL, Length of Directory, Length of File, Activation Domain Time, Expiration Domain Time, and sender policy framework (SPF). By leveraging these essential features, the system is equipped to make predictions regarding the authenticity of websites, differentiating between genuine and potentially malicious domains. The predictive model analyzes these features to determine whether a website is legitimate or malicious. It is this amalgamation of factors that empowers the system to safeguard users by providing timely alerts and ensuring their online security. The inclusion of these key features is essential to achieve optimal accuracy and to maximize the system's efficacy and value for the company and its users.
 
+#### The data is processed and reduction of features is done from 111 to 10 features using Principal Component Analysis keeping the same eesence of data model score. Later it is been fed in to a Pipeline.
+
 ## Data Requirements
 #### This data set consist of 88,647 websites labelled as legitimate or phishing having 111 features and allow the researchers to train their classification models, build phishing detection systems.
 1. Research Paper link - https://www.sciencedirect.com/science/article/pii/S2352340920313202
