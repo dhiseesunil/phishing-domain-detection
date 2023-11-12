@@ -96,11 +96,6 @@ st.button("Login/Signup", key = "login")
 if len(name) > 0 and len(password) > 0 :
     url = st.text_input("#### Hello {}!, please enter the URL : ".format(name), key = "url")
     st.write(url)
-    if url == 'https://phishing-domain-detection.streamlit.app/' or url == 'https://github.com/dhiseesunil/phishing-domain-detection' :
-        predict = st.button("Predict", key = "predict")
-        if predict :
-            st.success('### May not a phishing website')
-            st.balloons()
     if 'http' not in url :
         url = 'https://' + url
     predict = st.button("Predict", key = "predict")
